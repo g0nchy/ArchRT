@@ -16,7 +16,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # Set the current directory as the dotfiles directory
-ruta=$(pwd)
+ruta=$(dirname "$0")
 
 # Update system
 sudo pacman -Syu --noconfirm
@@ -28,15 +28,16 @@ sudo pacman -S --needed --noconfirm git base-devel cmake make yay
 yay -S --noconfirm bspwm picom polybar sxhkd dmenu rofi
 
 # Set wallpaper using feh
-wallpaper_path="$ruta/dotfiles/Wallpapers/simple.png"
+wallpaper_path="$ruta/Wallpapers/simple.png"
 feh --bg-fill "$wallpaper_path"
 
 # Copy dotfiles
-cp -r "$ruta/dotfiles/.config/bspwm" ~/.config/
-cp -r "$ruta/dotfiles/.config/sxhkd" ~/.config/
-cp -r "$ruta/dotfiles/.config/polybar" ~/.config/
-cp -r "$ruta/dotfiles/.config/kitty" ~/.config/
-cp -r "$ruta/dotfiles/.config/rofi" ~/.config/
+mkdir -p ~/.config
+cp -r "$ruta/.config/bspwm" ~/.config/
+cp -r "$ruta/.config/sxhkd" ~/.config/
+cp -r "$ruta/.config/polybar" ~/.config/
+cp -r "$ruta/.config/kitty" ~/.config/
+cp -r "$ruta/.config/rofi" ~/.config/
 
 # Enable launch on startup
 chmod +x ~/.config/bspwm/bspwmrc
