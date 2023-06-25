@@ -15,13 +15,8 @@ if [[ $? -ne 0 ]]; then
    exit 1
 fi
 
-# Search for dotfiles directory
-dotfiles_dir=$(find ~ -type d -name "dotfiles" -print -quit)
-
-if [ -z "$dotfiles_dir" ]; then
-   echo "Dotfiles directory not found. Please make sure you have the dotfiles directory in the correct location."
-   exit 1
-fi
+# Set the current directory as the dotfiles directory
+ruta=$(pwd)
 
 # Update system
 sudo pacman -Syu --noconfirm
@@ -33,15 +28,15 @@ sudo pacman -S --needed --noconfirm git base-devel cmake make yay
 yay -S --noconfirm bspwm picom polybar sxhkd dmenu rofi
 
 # Set wallpaper using feh
-wallpaper_path="$dotfiles_dir/Wallpapers/simple.png"
+wallpaper_path="$ruta/dotfiles/Wallpapers/simple.png"
 feh --bg-fill "$wallpaper_path"
 
 # Copy dotfiles
-cp -r "$dotfiles_dir/.config/bspwm" ~/.config/
-cp -r "$dotfiles_dir/.config/sxhkd" ~/.config/
-cp -r "$dotfiles_dir/.config/polybar" ~/.config/
-cp -r "$dotfiles_dir/.config/kitty" ~/.config/
-cp -r "$dotfiles_dir/.config/rofi" ~/.config/
+cp -r "$ruta/dotfiles/.config/bspwm" ~/.config/
+cp -r "$ruta/dotfiles/.config/sxhkd" ~/.config/
+cp -r "$ruta/dotfiles/.config/polybar" ~/.config/
+cp -r "$ruta/dotfiles/.config/kitty" ~/.config/
+cp -r "$ruta/dotfiles/.config/rofi" ~/.config/
 
 # Enable launch on startup
 chmod +x ~/.config/bspwm/bspwmrc
