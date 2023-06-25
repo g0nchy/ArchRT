@@ -8,6 +8,13 @@ if [[ $EUID -eq 0 ]]; then
    exit 1
 fi
 
+# Check internet connection
+ping -q -w 1 -c 1 google.com &> /dev/null
+if [[ $? -ne 0 ]]; then
+   echo "No internet connection. Please make sure you are connected to the internet."
+   exit 1
+fi
+
 # Search for dotfiles directory
 dotfiles_dir=$(find ~ -type d -name "dotfiles" -print -quit)
 
@@ -22,8 +29,8 @@ sudo pacman -Syu --noconfirm
 # Install dependencies
 sudo pacman -S --needed --noconfirm git base-devel cmake make yay
 
-# Install bspwm, picom, polybar, sxhkd, dmenu
-yay -S --noconfirm bspwm picom polybar sxhkd dmenu
+# Install bspwm, picom, polybar, sxhkd, dmenu, rofi
+yay -S --noconfirm bspwm picom polybar sxhkd dmenu rofi
 
 # Set wallpaper using feh
 wallpaper_path="$dotfiles_dir/Wallpapers/simple.png"
@@ -33,6 +40,8 @@ feh --bg-fill "$wallpaper_path"
 cp -r "$dotfiles_dir/.config/bspwm" ~/.config/
 cp -r "$dotfiles_dir/.config/sxhkd" ~/.config/
 cp -r "$dotfiles_dir/.config/polybar" ~/.config/
+cp -r "$dotfiles_dir/.config/kitty" ~/.config/
+cp -r "$dotfiles_dir/.config/rofi" ~/.config/
 
 # Enable launch on startup
 chmod +x ~/.config/bspwm/bspwmrc
@@ -45,14 +54,11 @@ echo "sxhkd &" >> ~/.xinitrc
 echo "polybar -r main &" >> ~/.xinitrc
 
 # Configure kitty
-mkdir -p ~/.config/kitty
-cp "$dotfiles_dir/.config/kitty/kitty.conf" ~/.config/kitty/
-
-# Set kitty as the default terminal
 sudo update-alternatives --config x-terminal-emulator
+sed -i 's/urxvt/kitty/g' ~/.config/bspwm/bspwmrc
 
 # Configure bspwmrc
-sed -i 's/urxvt/kitty/g' ~/.config/bspwm/bspwmrc
+sed -i 's/rofi -show/rofi -show drun/g' ~/.config/bspwm/bspwmrc
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
