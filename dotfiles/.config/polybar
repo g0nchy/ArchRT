@@ -1,1 +1,25 @@
+[bar/main]
+width = 100%
+height = 28
+foreground = #eceff4
+background = #2e3440
 
+modules-left = date
+modules-center = windowtitle
+modules-right = bspwm
+
+[module/date]
+type = internal/date
+date = %a %d %b %Y
+interval = 60
+
+[module/windowtitle]
+type = internal/windowtitle
+prefix-foreground = ${colors.foreground-alt}
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+strip-wm-name = true
+underline-focussed-monitor = true
+underline-focussed-monitor-width = 4
