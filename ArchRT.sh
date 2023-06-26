@@ -18,27 +18,21 @@ fi
 # Set the current directory as the dotfiles directory
 ruta=$(dirname "$0")
 
+# Create .config directory if it doesn't exist
+mkdir -p ~/.config
+
 # Update system
 sudo pacman -Syu --noconfirm
 
-# Install bspwm, sxhkd, dmenu
-sudo pacman -S --noconfirm bspwm sxhkd dmenu
+# Install bspwm, sxhkd, dmenu, and kitty
+sudo pacman -S --noconfirm bspwm sxhkd dmenu kitty
 
-# Install LightDM and its greeter
-sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter
-
-# Install Kitty terminal emulator
-sudo pacman -S --noconfirm kitty
-
-# Enable LightDM service
-sudo systemctl enable lightdm
-
-# Configure bspwmrc
+# Configure bspwm
 echo "exec bspwm" > ~/.config/bspwm/bspwmrc
 
-# Configure sxhkdrc
+# Configure sxhkd
 echo "super + Return" >> ~/.config/sxhkd/sxhkdrc
-echo "    kitty &" >> ~/.config/sxhkd/sxhkdrc
+echo "    kitty" >> ~/.config/sxhkd/sxhkdrc
 
 # Configure dmenu
 echo "#!/bin/bash" > ~/.dmenurc
@@ -49,7 +43,12 @@ chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.dmenurc
 
-echo "Installation and configuration of bspwm, sxhkd, dmenu, LightDM, and Kitty completed."
+# Copy dotfiles to respective directories
+cp -r "$ruta/dotfiles/.config/kitty" ~/.config/
+cp -r "$ruta/dotfiles/.config/picom" ~/.config/
+cp -r "$ruta/dotfiles/.config/polybar" ~/.config/
+
+echo "Installation and configuration of bspwm, sxhkd, dmenu, and kitty completed."
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
