@@ -18,34 +18,33 @@ fi
 # Set the current directory as the dotfiles directory
 ruta=$(dirname "$0")
 
-#!/bin/bash
-
 # Update system
 sudo pacman -Syu --noconfirm
 
-# Install bspwm, sxhkd, dmenu, lightdm, and lightdm-gtk-greeter
-sudo pacman -S --noconfirm bspwm sxhkd dmenu lightdm lightdm-gtk-greeter
-
-# Enable LightDM service
-sudo systemctl enable lightdm.service
+# Install bspwm, sxhkd, dmenu, kitty
+sudo pacman -S --noconfirm bspwm sxhkd dmenu kitty
 
 # Configure bspwmrc
 echo "exec bspwm" > ~/.config/bspwm/bspwmrc
 
 # Configure sxhkdrc
-echo "super + Return" >> ~/.config/sxhkd/sxhkdrc
-echo "    kitty &" >> ~/.config/sxhkd/sxhkdrc
+echo "super + Return" > ~/.config/sxhkd/sxhkdrc
+echo "    kitty" >> ~/.config/sxhkd/sxhkdrc
 
-# Configure dmenu
+# Remove any previous configuration related to opening other terminals
+sed -i '/exec urxvt/d' ~/.config/bspwm/bspwmrc
+sed -i '/exec urxvt/d' ~/.config/sxhkd/sxhkdrc
+
+# Configure dmenurc
 echo "#!/bin/bash" > ~/.dmenurc
-echo "dmenu_run" >> ~/.dmenurc
+echo "kitty" >> ~/.dmenurc
 
 # Giving execute permission
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.dmenurc
 
-echo "Installation and configuration of bspwm, sxhkd, dmenu, and LightDM completed."
+echo "Installation and configuration of bspwm, sxhkd, dmenu, and kitty completed."
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
