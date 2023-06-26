@@ -23,17 +23,20 @@ ruta=$(dirname "$0")
 # Update system
 sudo pacman -Syu --noconfirm
 
-# Installl bspwm, sxhkd y dmenu
-sudo pacman -S --noconfirm bspwm sxhkd dmenu
+# Install bspwm, sxhkd, dmenu, lightdm, and lightdm-gtk-greeter
+sudo pacman -S --noconfirm bspwm sxhkd dmenu lightdm lightdm-gtk-greeter
 
-# Configurate bspwmrc
+# Enable LightDM service
+sudo systemctl enable lightdm.service
+
+# Configure bspwmrc
 echo "exec bspwm" > ~/.config/bspwm/bspwmrc
 
-# Configurate sxhkdrc
+# Configure sxhkdrc
 echo "super + Return" >> ~/.config/sxhkd/sxhkdrc
 echo "    kitty &" >> ~/.config/sxhkd/sxhkdrc
 
-# Configurate dmenu
+# Configure dmenu
 echo "#!/bin/bash" > ~/.dmenurc
 echo "dmenu_run" >> ~/.dmenurc
 
@@ -42,7 +45,7 @@ chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.dmenurc
 
-echo "Instalation and configuration of bspwm, sxhkd and dmenu completed."
+echo "Installation and configuration of bspwm, sxhkd, dmenu, and LightDM completed."
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
