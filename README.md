@@ -1,4 +1,4 @@
-# ArchRT
+# ArchRT (Still in development, not working yet)
 
 ArchRT is a script that automates the setup of the Arch Linux environment for pentesting purposes. It aims to provide a lightweight and aesthetically pleasing configuration.
 
