@@ -24,31 +24,25 @@ mkdir -p ~/.config
 # Update system
 sudo pacman -Syu --noconfirm
 
-# Install bspwm, sxhkd, dmenu, and kitty
-sudo pacman -S --noconfirm bspwm sxhkd dmenu kitty
+# INSTALLING GREETER (LIGHTDM)
 
-# Configure bspwm
-echo "exec bspwm" > ~/.config/bspwm/bspwmrc
+# Install lightdm and lightdm-gtk-greeter
+sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter
 
-# Configure sxhkd
-echo "super + Return" >> ~/.config/sxhkd/sxhkdrc
-echo "    kitty" >> ~/.config/sxhkd/sxhkdrc
+# Add lightdm and greeter to config file
+echo "greeter-session=lightdm-gtk-greeter" | sudo tee -a /etc/lightdm/lightdm.conf
 
-# Configure dmenu
-echo "#!/bin/bash" > ~/.dmenurc
-echo "dmenu_run" >> ~/.dmenurc
+# Install systemd. Enable lightdm service
+sudo pacman -S --noconfirm systemd
+sudo systemctl enable lightdm.service
 
-# Giving execute permission
-chmod +x ~/.config/bspwm/bspwmrc
-chmod +x ~/.config/sxhkd/sxhkdrc
-chmod +x ~/.dmenurc
+# INSTALLING BSPWM, SXHKD, DMENU, PICOM, KITTY AND FEH
 
-# Copy dotfiles to respective directories
-cp -r "$ruta/dotfiles/.config/kitty" ~/.config/
-cp -r "$ruta/dotfiles/.config/picom" ~/.config/
-cp -r "$ruta/dotfiles/.config/polybar" ~/.config/
+# Install bspwm, sxhkd, dmenu, picom, kitty and feh
+sudo pacman -S --noconfirm bspwm sxhkd dmenu picom kitty feh
 
-echo "Installation and configuration of bspwm, sxhkd, dmenu, and kitty completed."
+# Create .xprofile file
+touch ~/.xprofile
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
