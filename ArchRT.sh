@@ -31,8 +31,8 @@ if [[ $? -ne 0 ]]; then
    exit 1
 fi
 
-# Set the current directory as the dotfiles directory
-ruta=$(dirname "$0")
+# Set the current directory as "path" variable
+path=$(dirname "$0")
 
 # Create .config directory if it doesn't exist
 mkdir -p ~/.config
@@ -73,7 +73,24 @@ cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
 sed -i 's/urxvt/kitty/' ~/.config/sxhkd/sxhkdrc
 sed -i 's/super + @space/super + d/' ~/.config/sxhkd/sxhkdrc # Open dmenu with super (windows) + d instead of super + space
 
+# Configute to change focus between windows with keyboard arrows instead of H, J, K, L.
+sed -i 's/super + h/super + Left/' ~/.config/sxhkd/sxhkdrc
+sed -i 's/super + j/super + Down/' ~/.config/sxhkd/sxhkdrc
+sed -i 's/super + k/super + Up/' ~/.config/sxhkd/sxhkdrc
+sed -i 's/super + l/super + Right/' ~/.config/sxhkd/sxhkdrc
+
+# Create .xprofile file if it doesn't exist
+touch ~/.xprofile
+
+# Add lines to .xprofile
+echo 'XDG_CONFIG_HOME="$HOME/.config"' | tee -a ~/.xprofile
+echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
+
+# Set wallpaper with feh
+feh --bg-fill "$path/Wallpapers/simple.png"
+
 # Display completion message
+echo ""
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
 
 read -r response
