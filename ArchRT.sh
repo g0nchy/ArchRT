@@ -66,8 +66,11 @@ mkdir ~/.config/bspwm
 mkdir ~/.config/sxhkd
 
 # Copy configurations files for bspwm and sxhkd
-cp /usr/share/doc/bspwm/examples/bspwmrc ~/.xprofile/bspwm/
-cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.xprofile/sxhkd/
+cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/
+cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
+
+# Configute kitty as the terminal emulator in the sxhkd
+sed -i 's/urxvt/kitty/' ~/.config/sxhkd/sxhkdrc
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
