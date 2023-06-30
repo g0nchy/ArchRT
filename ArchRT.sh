@@ -57,8 +57,17 @@ sudo systemctl enable lightdm.service
 # Install bspwm, sxhkd, dmenu, picom, kitty and feh
 sudo pacman -S --noconfirm bspwm sxhkd dmenu picom kitty feh
 
-# Create .xprofile file
-touch ~/.xprofile
+# Add commands to .xprofile for sxhkd and bspwm
+echo "sxhkd &" | sudo tee -a ~/.xprofile # Start sxhkd in the background
+echo "exec bspwm" | sudo tee -a ~/.xprofile # Execute bspwm as the (tiling) window manager
+
+# Create directories to store bspwm and sxhkd configuration files
+mkdir ~/.config/bspwm
+mkdir ~/.config/sxhkd
+
+# Copy configurations files for bspwm and sxhkd
+cp /usr/share/doc/bspwm/examples/bspwmrc ~/.xprofile/bspwm/
+cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.xprofile/sxhkd/
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
