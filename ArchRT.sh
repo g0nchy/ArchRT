@@ -71,6 +71,7 @@ cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
 
 # Configute kitty as the terminal emulator in the sxhkd
 sed -i 's/urxvt/kitty/' ~/.config/sxhkd/sxhkdrc
+sed -i 's/super + @space/super + d/' ~/.config/sxhkd/sxhkdrc # Open dmenu with super (windows) + d instead of super + space
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
