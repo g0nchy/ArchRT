@@ -85,8 +85,8 @@ echo 'XDG_CONFIG_HOME="$HOME/.config"' | tee -a ~/.xprofile
 echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 
 # Set wallpaper with feh
-mkdir ~/Wallpapers
-cp -R "$ruta/Wallpapers" ~/Wallpapers
+mkdir -p ~/Wallpapers
+cp -R "$ruta/Wallpapers/"* ~/Wallpapers
 feh --bg-fill "~/Wallpapers/simple.png"
 
 # Add wallpaper to .xprofile
