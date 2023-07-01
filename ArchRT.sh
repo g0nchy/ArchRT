@@ -1,20 +1,20 @@
 #!/bin/bash
 
 echo ""
-echo "*********************************************************"
-echo "*              Arch RedTeam - Setup Script              *"
-echo "*********************************************************"
-echo "*                                                       *"
-echo "*   █████╗ ██████╗  ██████╗██╗  ██╗  ██████╗ ████████╗  *"
-echo "*  ██╔══██╗██╔══██╗██╔════╝██║  ██║  ██╔══██╗╚══██╔══╝  *"
-echo "*  ███████║██████╔╝██║     ███████║  ██████╔╝   ██║     *"
-echo "*  ██╔══██║██╔══██╗██║     ██╔══██║  ██╔══██╗   ██║     *"
-echo "*  ██║  ██║██║  ██║╚██████╗██║  ██║  ██║  ██║   ██║     *"
-echo "*  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝  ╚═╝  ╚═╝   ╚═╝     *"
-echo "*                                                       *"
-echo "*********************************************************"
-echo "*                    Made by: g0nchy                    *"
-echo "*********************************************************"
+echo " *********************************************************"
+echo " *              Arch RedTeam - Setup Script              *"
+echo " *********************************************************"
+echo " *                                                       *"
+echo " *   █████╗ ██████╗  ██████╗██╗  ██╗  ██████╗ ████████╗  *"
+echo " *  ██╔══██╗██╔══██╗██╔════╝██║  ██║  ██╔══██╗╚══██╔══╝  *"
+echo " *  ███████║██████╔╝██║     ███████║  ██████╔╝   ██║     *"
+echo " *  ██╔══██║██╔══██╗██║     ██╔══██║  ██╔══██╗   ██║     *"
+echo " *  ██║  ██║██║  ██║╚██████╗██║  ██║  ██║  ██║   ██║     *"
+echo " *  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝  ╚═╝  ╚═╝   ╚═╝     *"
+echo " *                                                       *"
+echo " *********************************************************"
+echo " *                    Made by: g0nchy                    *"
+echo " *********************************************************"
 echo ""
 
 # ArchRT - Arch Red Team Setup Script
@@ -83,12 +83,6 @@ sed -i 's/super + l/super + Right/' ~/.config/sxhkd/sxhkdrc
 # Add lines to .xprofile
 echo 'XDG_CONFIG_HOME="$HOME/.config"' | tee -a ~/.xprofile
 echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
-
-# Set wallpaper with feh
-echo 'feh --bg-fill "$ruta/Wallpapers/simple.png" &' | tee -a ~/.config/bspwm/bspwmrc
-
-# Add wallpaper to .xprofile
-echo '~/.fehbg &' | sudo tee -a ~/.xprofile
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
