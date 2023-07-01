@@ -32,8 +32,8 @@ if [[ $? -ne 0 ]]; then
    exit 1
 fi
 
-# Set the current directory as "path" variable
-path=$(dirname "$0")
+# Set the current directory as "ruta" variable
+ruta=$(pwd)
 
 # Create .config directory if it doesn't exist
 mkdir -p ~/.config
@@ -80,15 +80,14 @@ sed -i 's/super + j/super + Down/' ~/.config/sxhkd/sxhkdrc
 sed -i 's/super + k/super + Up/' ~/.config/sxhkd/sxhkdrc
 sed -i 's/super + l/super + Right/' ~/.config/sxhkd/sxhkdrc
 
-# Create .xprofile file if it doesn't exist
-touch ~/.xprofile
-
 # Add lines to .xprofile
 echo 'XDG_CONFIG_HOME="$HOME/.config"' | tee -a ~/.xprofile
 echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 
 # Set wallpaper with feh
-feh --bg-fill $path/Wallpapers/simple.png
+mkdir ~/Wallpapers
+cp -R "$ruta/Wallpapers" ~/Wallpapers
+feh --bg-fill "~/Wallpapers/simple.png"
 
 # Add wallpaper to .xprofile
 echo '~/.fehbg &' | sudo tee -a ~/.xprofile
