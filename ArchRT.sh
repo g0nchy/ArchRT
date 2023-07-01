@@ -31,7 +31,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # Set the current directory as "path" variable
-path=$(dirname "$0")
+path=$(pwd)
 
 # Create .config directory if it doesn't exist
 mkdir -p ~/.config
