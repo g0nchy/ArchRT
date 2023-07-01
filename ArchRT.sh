@@ -33,7 +33,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # Set the current directory as "path" variable
-path=$(pwd)
+path=$(dirname "$0")
 
 # Create .config directory if it doesn't exist
 mkdir -p ~/.config
@@ -91,10 +91,9 @@ echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 feh --bg-fill $path/Wallpapers/simple.png
 
 # Add wallpaper to .xprofile
-echo '~/.fehbg &' | tee -a ~/.xprofile
+echo '~/.fehbg &' | sudo tee -a ~/.xprofile
 
 # Display completion message
-echo ""
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
 
 read -r response
