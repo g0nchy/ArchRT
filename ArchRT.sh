@@ -86,7 +86,7 @@ echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 
 # Prepare wallpaper configuration
 mkdir ~/Wallpapers
-cp -R "$path/Wallpapers" "$HOME/"
+mv "$ruta/Wallpapers/*" ~/Wallpapers/
 
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
