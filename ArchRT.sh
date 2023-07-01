@@ -84,6 +84,10 @@ sed -i 's/super + l/super + Right/' ~/.config/sxhkd/sxhkdrc
 echo 'XDG_CONFIG_HOME="$HOME/.config"' | tee -a ~/.xprofile
 echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 
+# Prepare wallpaper configuration
+mkdir ~/Wallpapers
+cp -R "$path/Wallpapers" "$HOME/"
+
 # Display completion message
 echo "ArchRT setup complete. Do you want to restart your system now? (y/n)"
 
