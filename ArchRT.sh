@@ -57,8 +57,8 @@ sudo systemctl enable lightdm.service
 sudo pacman -S --noconfirm bspwm sxhkd dmenu picom kitty feh
 
 # Add commands to .xprofile for sxhkd and bspwm
-echo "sxhkd &" | sudo tee -a ~/.xprofile # Start sxhkd in the background
-echo "exec bspwm" | sudo tee -a ~/.xprofile # Execute bspwm as the (tiling) window manager
+echo "sxhkd &" | tee -a ~/.xprofile # Start sxhkd in the background
+echo "exec bspwm" | tee -a ~/.xprofile # Execute bspwm as the (tiling) window manager
 
 # Create directories to store bspwm and sxhkd configuration files
 mkdir ~/.config/bspwm
@@ -87,6 +87,9 @@ echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 
 # Set wallpaper with feh
 feh --bg-fill "$path/Wallpapers/simple.png"
+
+# Add wallpaper to .xprofile
+echo '~/.fehbg &' | tee -a ~/.xprofile
 
 # Display completion message
 echo ""
