@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo ""
 echo "*********************************************************"
 echo "*              Arch RedTeam - Setup Script              *"
 echo "*********************************************************"
@@ -14,6 +15,7 @@ echo "*                                                       *"
 echo "*********************************************************"
 echo "*                    Made by: g0nchy                    *"
 echo "*********************************************************"
+echo ""
 
 # ArchRT - Arch Red Team Setup Script
 
@@ -86,7 +88,7 @@ echo 'XDG_CONFIG_HOME="$HOME/.config"' | tee -a ~/.xprofile
 echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 
 # Set wallpaper with feh
-feh --bg-fill "$path/Wallpapers/simple.png"
+feh --bg-fill $path/Wallpapers/simple.png
 
 # Add wallpaper to .xprofile
 echo '~/.fehbg &' | tee -a ~/.xprofile
