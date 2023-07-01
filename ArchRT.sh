@@ -87,7 +87,7 @@ echo 'export XDG_CONFIG_HOME' | tee -a ~/.xprofile
 # Set wallpaper with feh
 mkdir -p ~/Wallpapers
 cp -R "$ruta/Wallpapers/"* ~/Wallpapers
-feh --bg-fill "~/Wallpapers/simple.png"
+feh --bg-fill "$HOME/Wallpapers/simple.png"
 
 # Add wallpaper to .xprofile
 echo '~/.fehbg &' | sudo tee -a ~/.xprofile
