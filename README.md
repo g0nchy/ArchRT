@@ -17,8 +17,8 @@ ArchRT is a script that automates the setup of the Arch Linux environment for pe
 
 1. Clone the ArchRT repository to your local machine.
 2. Open a terminal and navigate to the cloned repository directory.
-3. Make the script executable: `chmod +x archrt.sh`.
-4. Run the script with the command: `./archrt.sh`.
+3. Make the script executable: `chmod +x ArchRT.sh`.
+4. Run the script with the command: `./ArchRT.sh`.
 5. Follow the prompts and provide any required inputs during the script execution.
 6. Once the script completes, your Arch Linux environment will be set up for pentesting purposes.
 
