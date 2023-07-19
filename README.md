@@ -24,7 +24,7 @@ ArchRT is a script that automates the setup of the Arch Linux environment for pe
 
 ## Customization
 
-ArchRT provides several configuration options that you can modify according to your preferences. You can find these options within the script file (`archrt.sh`). Feel free to customize and adjust them as needed.
+ArchRT provides several configuration options that you can modify according to your preferences. Feel free to customize and adjust them as needed.
 
 ## Disclaimer
 
