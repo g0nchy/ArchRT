@@ -1,5 +1,7 @@
 # ArchRT (Still in development)
 
+![GitHub License](https://img.shields.io/github/license/g0nchy/ArchRT)
+
 ArchRT is a script that automates the setup of the Arch Linux environment for pentesting purposes. It aims to provide a lightweight and aesthetically pleasing configuration.
 
 ## Features
